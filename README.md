@@ -1,5 +1,9 @@
 # Janhvi_Singh_AWS_Assessment
-Task 1-
+TASK 1-
 📄 Brief Explanation of VPC Design-The foundational architecture for this assessment is a secure, scalable, and highly available Virtual Private Cloud (VPC). The design implements a standard Multi-AZ 4-subnet topology to ensure maximum resilience against Availability Zone (AZ) failures. The Public Subnets are dedicated to hosting external-facing resources like the Application Load Balancer (ALB) and are routed via the Internet Gateway (IGW). Crucially, the Private Subnets—which will host all application instances—are isolated from inbound internet traffic and rely on a single NAT Gateway (NGW) for controlled outbound connectivity, fulfilling the requirement for enhanced security best practices.
 📊 CIDR Justification Table-The chosen CIDR blocks prioritize scalability and adherence to private addressing standards:CIDR RangePurposeJustificationVPC: $\text{10.0.0.0/16}$Main VPC blockProvides 65,536 private IPs, utilizing a Class A range for substantial future headroom, accommodating all potential services and growth.Subnets: $\text{/24}$Public & Private SubnetsEach subnet is allocated 256 IPs, offering ample size to host Auto Scaling Groups (ASG) and core services across two distinct Availability Zones (AZs).
 Screenshorts-1. VPC and CIDR Block ,Subnets,Route Tables ,NAT Gateway all the present in a folder name screenshort
+
+
+TASK 2-
+📄Brief Explanation of DeploymentA Free Tier $\text{t2.micro}$ EC2 instance was successfully launched in the existing public subnet defined in Task 1. To host the resume, a User Data script was executed on boot to automatically install the Nginx web server and deploy the static HTML content. For basic infrastructure hardening, a dedicated Security Group (SG) was configured to allow public access only for HTTP (Port 80), while restricting SSH (Port 22) access solely to my specific IP address ($\text{49.43.114.137/32}$), minimizing the attack surface.
